@@ -1,0 +1,150 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Slideshow Container */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Individual Slides */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Content Animation */
+.content {
+    max-width: 800px;
+    z-index: 10;
+}
+
+/* Typography */
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 154, 158, 0.3);
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-top: 20px;
+    color: #fecfef;
+}
+
+p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* Image Slide Specifics */
+.image-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 40px rgba(255, 154, 158, 0.6);
+}
+
+/* Navigation Dots */
+.dots-container {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 20;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: #fecfef;
+    transform: scale(1.3);
+    box-shadow: 0 0 15px #fecfef;
+}
+
+/* Smooth Entrance Animations */
+.animate-text {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out 0.3s;
+}
+
+.animate-image {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 1s ease-out 0.3s;
+}
+
+.slide.active .animate-text,
+.slide.active .animate-image {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.delay-1 {
+    transition-delay: 0.8s;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    p { font-size: 1.2rem; }
+    .profile-pic { width: 220px; height: 220px; }
+}
